@@ -146,11 +146,11 @@ entrada_nome = Entry(detalhes, textvariable=nome, width=20,
                      font='arial10').place(x=200, y=240)
 
 data_nasc = StringVar()
-data_nasc = Entry(detalhes, textvariable=nome, width=20,
+data_nasc = Entry(detalhes, textvariable=data_nasc, width=20,
                   font='arial10').place(x=620, y=240)
 
 salas = StringVar()
-salas = Entry(detalhes, textvariable=nome, width=20,
+salas = Entry(detalhes, textvariable=salas, width=20,
               font='arial10').place(x=620, y=400)
 
 series = Combobox(detalhes, values=['1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -180,16 +180,16 @@ Label(detalhes2, text='Nota 04:', font=texto,
       bg=framebg, fg=framefg).place(x=470, y=600)
 
 nota1 = StringVar()
-entrada_nome = Entry(detalhes, textvariable=nota1, width=20,
+nota1 = Entry(detalhes, textvariable=nota1, width=20,
                      font='arial10').place(x=200, y=540)
 nota2 = StringVar()
-entrada_nome = Entry(detalhes, textvariable=nota2, width=20,
+nota2 = Entry(detalhes, textvariable=nota2, width=20,
                      font='arial10').place(x=200, y=600)
 nota3 = StringVar()
-entrada_nome = Entry(detalhes, textvariable=nota3, width=20,
+nota3 = Entry(detalhes, textvariable=nota3, width=20,
                      font='arial10').place(x=600, y=540)
 nota4 = StringVar()
-entrada_nome = Entry(detalhes, textvariable=nota4, width=20,
+nota4 = Entry(detalhes, textvariable=nota4, width=20,
                      font='arial10').place(x=600, y=600)
 
 # Foto
@@ -204,7 +204,7 @@ Button(janela, text='Carregar Foto', width=19, height=2, font=busca2,
 Button(janela, text='Salvar', width=19, height=2,
        font=busca2, bg='lightgreen').place(x=1000, y=460)
 Button(janela, text='Resetar', width=19, height=2,
-       font=busca2, bg='lightpink',command=limpar).place(x=1000, y=540)
+       font=busca2, bg='lightpink').place(x=1000, y=540)
 Button(janela, text='Sair', width=19, height=2, font=busca2,
        bg='grey', command=Exit).place(x=1000, y=620)
 
