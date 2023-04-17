@@ -65,15 +65,65 @@ def mostrarimagem():
     pers.config(image=photo2)
     pers.image = photo2
 
-""" def limpar():
-    Nome.set('')
-     """
+
+def limpar():
+    nome.set('')
+    data_nasc.set('')
+    salas.set('')
+    series.set('')
+    turnos.set('')
+    genero.set('')
+    nota1.set('')
+    nota2.set('')
+    nota3.set('')
+    nota4.set('')
+
+    numero_registro()
+    salvarBotao.config(state='normal')
+
+
+def salvar():
+      r1 = registro.get()
+      n1 = nome.get()
+      d1 = data_nasc.get()
+      g1 = genero.get()
+      s2 = series.get()
+      t1 = turnos.get()
+      s1 = salas.get()
+      p1 = nota1.get()
+      p2 = nota2.get()
+      p3 = nota3.get()
+      p4 = nota4.get()
+
+      try:
+            g1 = genero
+      except:
+            messagebox.showerror("error", "Selecione um genero!")
+
+      if n1 == "" or d1 == "" or g1 == "" or s2 == "" or t1 == "" or s1 =="" or p1 == "" or p2 == "" or p3 == "" or p4== "":
+            messagebox.showerror("error","Preencha todos os dados")
+      else:
+            file=openpyxl.load_workbook('Registro_Estudantes.xlsx')
+            conteudo=file.active()
+            conteudo.cell(column=1,row=conteudo.max_row+1,value=r1)
+            conteudo.cell(column=2,row=conteudo.max_row,value=n1)
+            conteudo.cell(column=3,row=conteudo.max_row,value=d1)
+            conteudo.cell(column=4,row=conteudo.max_row,value=g1)
+            conteudo.cell(column=5,row=conteudo.max_row,value=s2)
+            conteudo.cell(column=6,row=conteudo.max_row,value=t1)
+            conteudo.cell(column=7,row=conteudo.max_row,value=s1)
+            conteudo.cell(column=8,row=conteudo.max_row,value=p1)
+            conteudo.cell(column=9,row=conteudo.max_row,value=p2)
+            conteudo.cell(column=10,row=conteudo.max_row,value=p3)
+            conteudo.cell(column=11,row=conteudo.max_row,value=p4)
+
+            file.save(r'Registro_Estudantes.xlsx')
 
 def numero_registro():
     file = openpyxl.load_workbook('Registro_Estudantes.xlsx')
     conteudo = file.active
     linha = conteudo.max_row
-    max_row_value = conteudo.cell(row=linha,column=1).value
+    max_row_value = conteudo.cell(row=linha, column=1).value
 
     try:
         registro.set(max_row_value+1)
@@ -146,26 +196,25 @@ entrada_nome = Entry(detalhes, textvariable=nome, width=20,
                      font='arial10').place(x=200, y=240)
 
 data_nasc = StringVar()
-data_nasc = Entry(detalhes, textvariable=data_nasc, width=20,
-                  font='arial10').place(x=620, y=240)
+data_nascimento = Entry(detalhes, textvariable=data_nasc, width=20,
+                        font='arial10').place(x=620, y=240)
+
+genero = StringVar()
+entrada_genero = Entry(detalhes, textvariable=genero, width=20,
+                       font='arial10').place(x=200, y=320)
+
+series = StringVar()
+entrada_series = Entry(detalhes, textvariable=series, width=20,
+                       font='arial10').place(x=620, y=320)
+
+turnos = StringVar()
+entrada_turnos = Entry(detalhes, textvariable=turnos, width=20,
+                       font='arial10').place(x=200, y=400)
 
 salas = StringVar()
-salas = Entry(detalhes, textvariable=salas, width=20,
-              font='arial10').place(x=620, y=400)
+salas1 = Entry(detalhes, textvariable=salas, width=20,
+               font='arial10').place(x=620, y=400)
 
-series = Combobox(detalhes, values=['1', '2', '3', '4', '5', '6', '7', '8', '9',
-                  '10', '11', '12'], font='Roboto 10', width=17, state='r').place(x=620, y=320)
-turnos = Combobox(detalhes, values=['Matutino', 'Vespertino', 'Noturno'],
-                  font='Roboto 10', width=17, state='r').place(x=200, y=400)
-
-
-genero = IntVar()
-gen1 = Radiobutton(detalhes, text='MASC', variable=genero, value=1,
-                   bg=framebg, fg=framefg, command=selecionar).place(x=200, y=320)
-gen2 = Radiobutton(detalhes, text='FEMI', variable=genero, value=2,
-                   bg=framebg, fg=framefg, command=selecionar).place(x=280, y=320)
-gen3 = Radiobutton(detalhes, text='OUTROS', variable=genero, value=3,
-                   bg=framebg, fg=framefg, command=selecionar).place(x=360, y=320)
 
 # Informações Notas
 detalhes2 = LabelFrame(janela, text='Informações das Notas', font=20, bd=2,
@@ -180,17 +229,17 @@ Label(detalhes2, text='Nota 04:', font=texto,
       bg=framebg, fg=framefg).place(x=470, y=600)
 
 nota1 = StringVar()
-nota1 = Entry(detalhes, textvariable=nota1, width=20,
-                     font='arial10').place(x=200, y=540)
+nota10 = Entry(detalhes, textvariable=nota1, width=20,
+               font='arial10').place(x=200, y=540)
 nota2 = StringVar()
-nota2 = Entry(detalhes, textvariable=nota2, width=20,
-                     font='arial10').place(x=200, y=600)
+nota20 = Entry(detalhes, textvariable=nota2, width=20,
+               font='arial10').place(x=200, y=600)
 nota3 = StringVar()
-nota3 = Entry(detalhes, textvariable=nota3, width=20,
-                     font='arial10').place(x=600, y=540)
+nota30 = Entry(detalhes, textvariable=nota3, width=20,
+               font='arial10').place(x=600, y=540)
 nota4 = StringVar()
-nota4 = Entry(detalhes, textvariable=nota4, width=20,
-                     font='arial10').place(x=600, y=600)
+nota40 = Entry(detalhes, textvariable=nota4, width=20,
+               font='arial10').place(x=600, y=600)
 
 # Foto
 foto = Frame(janela, bd=3, bg="white", width=180,
@@ -201,10 +250,10 @@ pers = Label(foto, bg='white', image=iconeimagem3).place(x=1000, y=160)
 # Botao
 Button(janela, text='Carregar Foto', width=19, height=2, font=busca2,
        bg='lightblue', command=mostrarimagem).place(x=1000, y=380)
-Button(janela, text='Salvar', width=19, height=2,
-       font=busca2, bg='lightgreen').place(x=1000, y=460)
+salvarBotao = Button(janela, text='Salvar', width=19, height=2,
+                     font=busca2, bg='lightgreen', command=salvar).place(x=1000, y=460)
 Button(janela, text='Resetar', width=19, height=2,
-       font=busca2, bg='lightpink').place(x=1000, y=540)
+       font=busca2, bg='lightpink', command=limpar).place(x=1000, y=540)
 Button(janela, text='Sair', width=19, height=2, font=busca2,
        bg='grey', command=Exit).place(x=1000, y=620)
 
